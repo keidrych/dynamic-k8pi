@@ -1,22 +1,26 @@
 {
   "name": "dynamic-k8pi",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Kubernetes Automatic API Discovery & URL Path Creation",
   "main": "index.js",
   "scripts": {
     "commitmsg": "validate-commit-msg",
     "lint": "xo ./**/*.js --ignore ./node_modules",
-    "test":
-      "node_modules/.bin/mocha templates/base/helper.js routes/**/*spec.js",
+    "test": "node_modules/.bin/mocha templates/base/helper.js routes/**/*spec.js",
     "cz": "git-cz",
-    "syncSchemas":
-      "if !(./node_modules/.bin/path-exists schemaAll); then node schema-container.js; else node getSchema.js; fi"
+    "syncSchemas": "if !(./node_modules/.bin/path-exists schemaAll); then node schema-container.js; else node getSchema.js; fi"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TayloredTechnology/dynamic-k8pi.git"
   },
-  "keywords": ["Kubernetes", "K8's", "API", "URL", "Discovery"],
+  "keywords": [
+    "Kubernetes",
+    "K8's",
+    "API",
+    "URL",
+    "Discovery"
+  ],
   "author": "Taylored Technology",
   "license": "SEE LICENSE IN LICENSE",
   "bugs": {

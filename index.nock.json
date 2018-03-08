@@ -1,0 +1,88 @@
+{
+  "api": {
+    "v1": {
+      "persistentvolumes": {
+        "namespaced": false,
+        "kind": "PersistentVolume",
+        "verbs": [
+          "create",
+          "delete",
+          "deletecollection",
+          "get",
+          "list",
+          "patch",
+          "update",
+          "watch"
+        ],
+        "shortNames": ["pv"]
+      },
+      "pods": {
+        "namespaced": true,
+        "kind": "Pod",
+        "verbs": [
+          "create",
+          "delete",
+          "deletecollection",
+          "get",
+          "list",
+          "patch",
+          "proxy",
+          "update",
+          "watch"
+        ],
+        "shortNames": ["po"]
+      }
+    }
+  },
+  "apis": {
+    "autoscaling": {
+      "v1": {
+        "horizontalpodautoscalers": {
+          "namespaced": true,
+          "kind": "HorizontalPodAutoscaler",
+          "verbs": [
+            "create",
+            "delete",
+            "deletecollection",
+            "get",
+            "list",
+            "patch",
+            "update",
+            "watch"
+          ],
+          "shortNames": ["hpa"]
+        }
+      }
+    },
+    "storage~k8s~io": {
+      "v1": {
+        "storageclasses": {
+          "namespaced": false,
+          "kind": "StorageClass",
+          "verbs": [
+            "create",
+            "delete",
+            "deletecollection",
+            "get",
+            "list",
+            "patch",
+            "update",
+            "watch"
+          ],
+          "shortNames": ["sc"]
+        }
+      }
+    }
+  },
+  "version": {
+    "major": "1",
+    "minor": "6",
+    "gitVersion": "v1.6.4",
+    "gitCommit": "d6f433224538d4f9ca2f7ae19b252e6fcb66a3ae",
+    "gitTreeState": "dirty",
+    "buildDate": "2017-06-22T04:31:09Z",
+    "goVersion": "go1.7.5",
+    "compiler": "gc",
+    "platform": "linux/amd64"
+  }
+}

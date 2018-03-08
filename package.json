@@ -1,0 +1,76 @@
+{
+  "name": "dynamic-k8pi",
+  "version": "0.0.0",
+  "description": "Kubernetes Automatic API Discovery & URL Path Creation",
+  "main": "index.js",
+  "scripts": {
+    "commitmsg": "validate-commit-msg",
+    "lint": "xo ./**/*.js --ignore ./node_modules",
+    "test": "node_modules/.bin/mocha templates/base/helper.js routes/**/*spec.js",
+    "cz": "git-cz",
+    "syncSchemas": "if !(./node_modules/.bin/path-exists schemaAll); then node schema-container.js; else node getSchema.js; fi"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TayloredTechnology/dynamic-k8pi.git"
+  },
+  "keywords": [
+    "Kubernetes",
+    "K8's",
+    "API",
+    "URL",
+    "Discovery"
+  ],
+  "author": "Taylored Technology",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/TayloredTechnology/dynamic-k8pi/issues"
+  },
+  "homepage": "https://github.com/TayloredTechnology/dynamic-k8pi#readme",
+  "devDependencies": {
+    "clear-require": "^2.0.0",
+    "cz-conventional-changelog": "^2.1.0",
+    "fastest-validator": "^0.6.5",
+    "is-installed": "^2.0.1",
+    "nock": "^9.2.3",
+    "os": "^0.1.1",
+    "tap": "^11.1.1",
+    "tapromise": "^1.1.2",
+    "testdouble": "^3.5.2",
+    "xo": "^0.20.3"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "co": "^4.6.0",
+    "deep": "0.0.2",
+    "fs-extra": "^5.0.0",
+    "lodash": "^4.17.5",
+    "semver": "^5.5.0"
+  },
+  "xo": {
+    "prettier": true,
+    "semicolon": false,
+    "globals": [],
+    "rules": {
+      "import/no-unresolved": "off",
+      "import/order": "off",
+      "import/no-extraneous-dependencies": "off",
+      "import/no-unassigned-import": "off",
+      "generator-star-spacing": "off",
+      "operator-linebreak": "off",
+      "new-cap": [
+        "error",
+        {
+          "newIsCap": true,
+          "capIsNew": true,
+          "capIsNewExceptions": []
+        }
+      ]
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

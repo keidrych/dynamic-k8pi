@@ -1,0 +1,10 @@
+.nyc_output
+.undodir
+Session.vim
+*debug.log
+*debug.log.*
+node_modules/
+npm-debug.log
+scratchpad.js
+tap-*
+

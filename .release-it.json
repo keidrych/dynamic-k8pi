@@ -1,0 +1,8 @@
+{
+  "increment": "conventional:angular",
+  "beforeChangelogCommand":
+    "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -s",
+  "changelogCommand":
+    "./node_modules/.bin/conventional-changelog -p angular | tail -n +3",
+  "safeBump": false
+}

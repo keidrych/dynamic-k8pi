@@ -17,7 +17,8 @@ When running locally the following ENV's can be relevant
 
 ## API
 
-### init()
+### init(returnStructure)
+returnStructure: true / false if return object should include API structure
 Returns: [Axios](https://www.npmjs.com/package/axios) object preconfigured with API access
 
 ### formURL(data)

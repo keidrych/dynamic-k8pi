@@ -69,7 +69,7 @@ ns.clusterAccess = inCluster => {
 	}
 }
 
-ns.init = co.wrap(function*() {
+ns.init = co.wrap(function*(returnStructure = false) {
 	const debug = selfDebug('dynamic-k8pi:init')
 	kube = axios.create(ns.clusterAccess(inCluster))
 	const struct = yield ns.generateStructure()
@@ -94,7 +94,14 @@ ns.init = co.wrap(function*() {
 	}
 	debug('isGlobal', isGlobal)
 	debug('apiStructure', apiStructure)
-	return yield apiStructure
+	if (returnStructure) {
+		return {
+			apiStructure,
+			kube
+		}
+	}
+
+	return kube
 })
 
 ns.generateStructure = co.wrap(function*() {
@@ -274,6 +281,6 @@ process.on('unhandledRejection', (reason, p) => {
 if (process.env.NODE_ENV === 'production') {
 	module.exports = ns.default
 } else {
-	module.exports = _.merge(ns, {inCluster: inCluster})
+	module.exports = _.merge(ns, inCluster)
 }
 console.log(module.exports)

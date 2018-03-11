@@ -1,3 +1,13 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/TayloredTechnology/dynamic-k8pi/compare/0.1.0...0.2.0) (2018-03-11)
+
+
+### Features
+
+* **auth:** extension ([4831e77](https://github.com/TayloredTechnology/dynamic-k8pi/commit/4831e77))
+
+
+
 <a name="0.1.0"></a>
 # 0.1.0 (2018-03-08)
 

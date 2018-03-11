@@ -98,11 +98,6 @@ function fromKubeconfig(kubeconfig, current, watchTimeout) {
 			cert = fs.readFileSync(path.normalize(user['client-certificate']))
 		} else if (user['client-certificate-data']) {
 			cert = Buffer.from(user['client-certificate-data'], 'base64').toString()
-		} else if (user['auth-provider'].config['idp-certificate-authority-data']) {
-			cert = Buffer.from(
-				user['auth-provider'].config['idp-certificate-authority-data'],
-				'base64'
-			).toString()
 		}
 
 		if (user['client-key']) {
@@ -113,15 +108,13 @@ function fromKubeconfig(kubeconfig, current, watchTimeout) {
 
 		if (user.token) {
 			auth.bearer = user.token
-		}
-
-		if (
+		} else if (
 			user['auth-provider'] &&
 			user['auth-provider'].config &&
-			user['auth-provider'].config['access-token']
+			user['auth-provider'].config['id-token'] &&
+			user['auth-provider'].name.includes('oidc')
 		) {
-			auth.bearer = user['auth-provider'].config['access-token']
-		} else if (user['auth-provider'].config['id-token']) {
+			// TODO verify and refresh token should it be expired
 			auth.bearer = user['auth-provider'].config['id-token']
 		}
 

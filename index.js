@@ -28,6 +28,7 @@ if (inCluster) {
 		? process.env.POD_NAMESPACE
 		: 'kube-system'
 }
+console.log('inCluster', inCluster)
 
 const contentType = 'application/json'
 axios.defaults.headers = {
@@ -42,6 +43,7 @@ ns.clusterAccess = inCluster => {
 		debug('Detected Container Running in Kubernetes')
 		const conf = apiConfig.getInCluster()
 		axios.defaults.baseURL = conf.url.replace(/([a-z]$)/, '$1/')
+		debug('conf', conf)
 
 		return {
 			httpsAgent: new https.Agent({
@@ -57,8 +59,32 @@ ns.clusterAccess = inCluster => {
 	}
 
 	debug('Development Machine Detected')
+	debug('CONTEXT', process.env.CONTEXT)
 	const conf = apiConfig.fromKubeconfig(null, process.env.CONTEXT)
 	axios.defaults.baseURL = conf.url.replace(/([a-z]$)/, '$1/')
+	debug('conf', conf)
+
+	if (conf.user && conf.pass) {
+		return {
+			httpsAgent: new https.Agent(
+				_.merge(_.omit(conf, ['user', 'pass']), {
+					auth: conf.user + ':' + conf.pass
+				})
+			)
+		}
+	}
+
+	if (conf.auth && conf.auth.bearer) {
+		debug('bearer', conf.auth.bearer)
+		return {
+			headers: {common: {Authorization: 'Bearer ' + conf.auth.bearer}},
+			httpsAgent: new https.Agent(
+				_.merge(conf, {
+					auth: null
+				})
+			)
+		}
+	}
 
 	return {
 		httpsAgent: new https.Agent(

@@ -202,11 +202,11 @@ ns.formURL = data => {
 	const debug = selfDebug('dynamic-k8pi:formURL')
 	let localData
 	if (_.has(data, 'metadata.namespace')) {
+		localData = _.cloneDeep(data)
+	} else {
 		localData = isGlobal
 			? _.merge(data, {metadata: {namespace: 'kube-system'}})
 			: _.merge(data, {metadata: {namespace: currentNamespace}})
-	} else {
-		localData = _.cloneDeep(data)
 	}
 	let urlPath = deep.select(apiStructure, obj => {
 		return obj === localData.kind

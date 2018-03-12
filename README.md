@@ -17,23 +17,64 @@ When running locally the following ENV's can be relevant
 
 ## API
 
-### init(returnStructure)
-returnStructure: true / false if return object should include API structure
-Returns: [Axios](https://www.npmjs.com/package/axios) object preconfigured with API access
+### init(returnStructure = false, globalNamespaces = ['kube-system'])
+returnStructure:	Determines if return object should include API structure
+globalNamespaces: Array of string values for Namespaces that have been given cluster level access
+Returns Promise: 
+- (returnStructure = false) [Axios](https://www.npmjs.com/package/axios) object preconfigured with API access
+- (returnStructure = true)
+	```
+	{
+		apiStructure, # apiStructure object
+		kube					# axios API access object
+	}
+	```
 
 ### formURL(data)
 data: expectation is the actual object that should be passed to Kubernetes API but its not necessary to pass the full object.
 
-Returns: URL base string for REST interactions based on the data object passed in.
+Returns: 
+- URL base string for REST interactions based on the data object passed in.
+- null when trying to access a cluster level endpoint from outside a cluster enabled namespace.
 
 ```
 data object
 {
 	kind: 'Service'	# API endpoint for access
-		metadata: {		# Optional (enabled in kube-system namespace)
+		metadata: {		# Optional (only used in cluster level namespaces)
 			namespace: 'default' 
 		}
 }
+```
+
+## Example
+
+Get a list of all services in `kube-system` namespace
+```
+const k8pi = require('dynamic-k8pi')
+k8pi.init().then(auth => {
+	formedURL = k8pi.formURL({kind: 'Service'})
+	auth.get(formedURL).then(res => console.log(res.data))
+})
+```
+
+Delete a specific service `topurge` in `kube-system` namespace
+```
+const k8pi = require('dynamic-k8pi')
+k8pi.init().then(auth => {
+	formedURL = k8pi.formURL({kind: 'Service'})
+	auth.delete(formedURL + '/topurge').then(res => console.log(res.data))
+})
+```
+
+Access Cluster level `StorageClass` in custom global namespace `storage`
+```
+process.env.POD_NAMESPACE = 'storage'
+const k8pi = require('dynamic-k8pi')
+k8pi.init(false, ['storage']).then(auth => {
+	formedURL = k8pi.formURL({kind: 'StorageClass'})
+	auth.get(formedURL).then(res => console.log(res.data))
+})
 ```
 
 ## Getting Started

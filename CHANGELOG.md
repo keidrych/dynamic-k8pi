@@ -1,3 +1,8 @@
+<a name="0.2.3"></a>
+## [0.2.3](https://github.com/TayloredTechnology/dynamic-k8pi/compare/0.2.2...0.2.3) (2018-03-12)
+
+
+
 <a name="0.2.2"></a>
 ## [0.2.2](https://github.com/TayloredTechnology/dynamic-k8pi/compare/0.2.1...0.2.2) (2018-03-12)
 

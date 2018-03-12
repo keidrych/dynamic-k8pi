@@ -95,13 +95,16 @@ ns.clusterAccess = inCluster => {
 	}
 }
 
-ns.init = co.wrap(function*(returnStructure = false) {
+ns.init = co.wrap(function*(
+	returnStructure = false,
+	globalNamespaces = ['kube-system']
+) {
 	const debug = selfDebug('dynamic-k8pi:init')
 	kube = axios.create(ns.clusterAccess(inCluster))
 	const struct = yield ns.generateStructure()
 	debug('struct', struct)
 	debug('currentNamespace', currentNamespace)
-	if (currentNamespace.includes('kube-system')) {
+	if (globalNamespaces.includes(currentNamespace)) {
 		isGlobal = true
 		apiStructure = _.cloneDeep(struct)
 	} else {
@@ -120,6 +123,7 @@ ns.init = co.wrap(function*(returnStructure = false) {
 	}
 	debug('isGlobal', isGlobal)
 	debug('apiStructure', apiStructure)
+	apiStructure.globalNamespaces = globalNamespaces
 	if (returnStructure) {
 		return {
 			apiStructure,
@@ -301,6 +305,8 @@ ns.formURL = data => {
 			])
 		}
 		urlReturn = _.concat(urlReturn, urlPath.slice(endIndex, endIndex + 1))
+	} else if (!apiStructure.globalNamespaces.includes(currentNamespace)) {
+		return null
 	}
 
 	// Convert '~' back to '.' for final URL

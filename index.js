@@ -196,8 +196,16 @@ ns.generateStructure = co.wrap(function*() {
 
 ns.formURL = data => {
 	const debug = selfDebug('dynamic-k8pi:formURL')
+	let localData
+	if (_.has(data, 'metadata.namespace')) {
+		localData = isGlobal
+			? _.merge(data, {metadata: {namespace: 'kube-system'}})
+			: _.merge(data, {metadata: {namespace: currentNamespace}})
+	} else {
+		localData = _.cloneDeep(data)
+	}
 	let urlPath = deep.select(apiStructure, obj => {
-		return obj === data.kind
+		return obj === localData.kind
 	})
 	debug('urlPath', urlPath)
 
@@ -221,7 +229,7 @@ ns.formURL = data => {
 			return val
 		}
 		// Format of alpha || beta
-		if (typeof val.startsWith('v') === 'object') {
+		if (val.startsWith('v')) {
 			val = val.substring(1)
 			isV = true
 		}
@@ -274,16 +282,17 @@ ns.formURL = data => {
 
 	const endIndex = urlPath
 		.map(item => {
-			return item.includes(data.kind.toLowerCase())
+			return item.includes(localData.kind.toLowerCase())
 		})
 		.indexOf(true)
 
 	let urlReturn = urlPath.slice(0, endIndex + 1)
-	if (_.get(apiStructure, urlReturn.join('.') + '.namespaced')) {
+	const isNamespaced = _.get(apiStructure, urlReturn.join('.') + '.namespaced')
+	if (isNamespaced) {
 		if (isGlobal) {
 			urlReturn = _.concat(urlPath.slice(0, endIndex), [
 				'namespaces',
-				data.metadata.namespace
+				localData.metadata.namespace
 			])
 		} else {
 			urlReturn = _.concat(urlPath.slice(0, endIndex), [

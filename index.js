@@ -213,6 +213,10 @@ ns.formURL = data => {
 	})
 	debug('urlPath', urlPath)
 
+	if (urlPath.length === 0) {
+		return null
+	}
+
 	// Scan for API Versioning and find latest version
 	let isSemver = false
 	let isV = false

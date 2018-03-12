@@ -1,6 +1,6 @@
 {
   "name": "dynamic-k8pi",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Kubernetes Automatic API Discovery & URL Path Creation",
   "main": "index.js",
   "scripts": {

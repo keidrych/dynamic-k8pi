@@ -1,3 +1,15 @@
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/TayloredTechnology/dynamic-k8pi/compare/0.2.0...0.2.1) (2018-03-12)
+
+
+### Bug Fixes
+
+* **namespace:** if branch ([0caeeb0](https://github.com/TayloredTechnology/dynamic-k8pi/commit/0caeeb0))
+* **namespaced:** globals ([01b7c12](https://github.com/TayloredTechnology/dynamic-k8pi/commit/01b7c12))
+* **namespaces:** default selection ([6d7f3de](https://github.com/TayloredTechnology/dynamic-k8pi/commit/6d7f3de))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/TayloredTechnology/dynamic-k8pi/compare/0.1.0...0.2.0) (2018-03-11)
 

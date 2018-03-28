@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0-rc.0"></a>
+# [0.3.0-rc.0](https://github.com/TayloredTechnology/dynamic-k8pi/compare/0.2.3...0.3.0-rc.0) (2018-03-28)
+
+
+### Features
+
+* **config:** baseline with TT configuration ([5ae04ee](https://github.com/TayloredTechnology/dynamic-k8pi/commit/5ae04ee))
+
+
+
 <a name="0.2.4-rc.0"></a>
 ## [0.2.4-rc.0](https://github.com/TayloredTechnology/dynamic-k8pi/compare/0.2.3...0.2.4-rc.0) (2018-03-28)
 

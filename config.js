@@ -114,7 +114,7 @@ function fromKubeconfig(kubeconfig, current, watchTimeout) {
 			user['auth-provider'].config['id-token'] &&
 			user['auth-provider'].name.includes('oidc')
 		) {
-			// TODO verify and refresh token should it be expired
+			// TODO verify and refresh token should it be expired id:0 gh:8 ic:gh
 			auth.bearer = user['auth-provider'].config['id-token']
 		}
 

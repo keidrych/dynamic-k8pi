@@ -136,7 +136,7 @@ ns.init = co.wrap(function*(
 
 ns.generateStructure = co.wrap(function*() {
 	const debug = selfDebug('dynamic-k8pi:generateStructure')
-	// TODO enable lazyload for API endpoints
+	// TODO enable lazyload for API endpoints id:1 gh:9 ic:gh
 	const versions = yield kube.get('api')
 	const backendAPIStructure = {}
 

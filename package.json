@@ -1,6 +1,6 @@
 {
   "name": "dynamic-k8pi",
-  "version": "0.3.0-rc.0",
+  "version": "0.3.0",
   "description": "Kubernetes Automatic API Discovery & URL Path Creation",
   "homepage": "https://github.com/TayloredTechnology/dynamic-k8pi#readme",
   "main": "index.js",

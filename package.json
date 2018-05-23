@@ -59,7 +59,7 @@
     "tap": "11.1.2",
     "tap-dot": "^1.0.5",
     "tap-summary": "^4.0.0",
-    "tape-index": "^1.1.1",
+    "tape-index": "^2.0.0",
     "tapromise": "1.1.2",
     "testdouble": "3.5.2",
     "xo": "0.20.3"

@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^6.1.3",
-    "@commitlint/config-conventional": "^6.1.3",
+    "@commitlint/config-conventional": "6.1.3",
     "@commitlint/lint": "^6.1.3",
     "@commitlint/prompt-cli": "^6.1.3",
     "chuhai": "^1.2.0",

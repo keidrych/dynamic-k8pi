@@ -54,7 +54,7 @@
     "fastest-validator": "0.6.5",
     "is-installed": "2.0.1",
     "lint-staged": "^7.0.0",
-    "nock": "9.2.3",
+    "nock": "10.0.6",
     "os": "0.1.1",
     "tap": "11.1.2",
     "tap-dot": "^1.0.5",

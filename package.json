@@ -33,7 +33,7 @@
     "per-env": "^1.0.2",
     "pino": "^4.15.2",
     "pino-debug": "^1.1.1",
-    "redrun": "^6.0.1",
+    "redrun": "^7.0.0",
     "semver": "^5.5.0",
     "tap-lochnest": "^1.1.2",
     "tape": "^4.9.0",

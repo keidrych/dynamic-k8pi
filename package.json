@@ -62,7 +62,7 @@
     "tape-index": "^1.1.1",
     "tapromise": "1.1.2",
     "testdouble": "3.5.2",
-    "xo": "0.20.3"
+    "xo": "0.48.0"
   },
   "engines": {
     "node": ">=6"

@@ -61,7 +61,7 @@
     "tap-summary": "^4.0.0",
     "tape-index": "^1.1.1",
     "tapromise": "1.1.2",
-    "testdouble": "3.5.2",
+    "testdouble": "3.16.5",
     "xo": "0.20.3"
   },
   "engines": {
